@@ -235,31 +235,53 @@ footer {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1.4fr;
-    gap: 50px;
+    grid-template-columns: 1.5fr 0.9fr 1fr 1fr 1fr;
+    gap: 35px;
     margin-bottom: 50px;
+    align-items: start;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
 }
 
 .footer-column h4 {
     color: #fff;
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 20px;
     font-weight: 700;
     letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 35px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), transparent);
+    border-radius: 2px;
 }
 
 .footer-column p {
-    line-height: 1.8;
-    color: #ccc;
-    margin-bottom: 15px;
+    line-height: 1.7;
+    color: #b8b8b8;
+    margin-bottom: 10px;
+    font-size: 13px;
 }
 
 .footer-column a {
-    color: #ccc;
+    color: #b8b8b8;
     text-decoration: none;
     display: block;
     margin-bottom: 10px;
-    transition: color 0.3s ease, padding-left 0.3s ease;
+    transition: all 0.3s ease;
+    font-size: 13px;
 }
 
 .footer-column a:hover {
@@ -270,39 +292,41 @@ footer {
 /* ABOUT SECTION */
 
 .footer-logo {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .footer-logo img {
-    height: 70px;
+    height: 65px;
     width: auto;
+    filter: brightness(1.1);
 }
 
 .footer-description {
-    line-height: 1.8;
-    color: #ccc;
-    margin-bottom: 25px;
-    font-size: 14px;
+    line-height: 1.7;
+    color: #b8b8b8;
+    margin-bottom: 20px;
+    font-size: 13px;
+    text-align: left;
 }
 
 /* SOCIAL ICONS */
 
 .social-icons {
     display: flex;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 12px;
+    margin-top: 15px;
 }
 
 .social-icons a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     background: #1a2a35;
     border-radius: 50%;
     color: var(--teal);
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -310,7 +334,7 @@ footer {
 .social-icons a:hover {
     background: var(--teal);
     color: #fff;
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 /* QUICK LINKS */
@@ -324,61 +348,185 @@ footer {
 /* CONTACT INFO */
 
 .contact-item {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     display: flex;
     align-items: flex-start;
     gap: 8px;
+    line-height: 1.5;
+}
+
+.contact-item span:first-child {
+    font-size: 14px;
+    min-width: 18px;
 }
 
 .contact-item strong {
     color: var(--teal);
+    font-size: 13px;
 }
 
 .contact-item a {
     display: inline;
     margin: 0;
+    color: #e0f7f7;
+    font-size: 13px;
+}
+
+.contact-item a:hover {
+    color: #fff;
+    padding-left: 0;
 }
 
 /* DISTRIBUTOR BOX */
 
 .distributor-select {
     width: 100%;
-    padding: 12px 15px;
-    border-radius: 6px;
-    background: #1a2a35;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(0,128,128,0.15), rgba(0,102,102,0.1));
     color: #fff;
-    border: 1px solid #2a3a45;
-    margin-bottom: 20px;
-    font-size: 14px;
+    border: 2px solid rgba(0,128,128,0.4);
+    margin-bottom: 16px;
+    font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.distributor-select option {
+    background: var(--footer-bg);
+    color: #fff;
+    padding: 10px;
+}
+
+.distributor-select:hover {
+    background: linear-gradient(135deg, rgba(0,128,128,0.25), rgba(0,102,102,0.2));
+    border-color: rgba(0,128,128,0.6);
+    box-shadow: 0 4px 12px rgba(0,128,128,0.2);
 }
 
 .distributor-select:focus {
     outline: none;
     border-color: var(--teal);
+    background: linear-gradient(135deg, rgba(0,128,128,0.2), rgba(0,102,102,0.15));
 }
 
 .distributor-box {
-    background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
-    color: #c62828;
-    border: 2px solid #c62828;
-    border-radius: 8px;
-    padding: 20px;
-    font-size: 14px;
+    padding: 16px 0 0 0;
+    font-size: 13px;
     line-height: 1.7;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: none;
+}
+
+.distributor-box.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.distributor-box-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #fff;
+    border-bottom: 2px solid rgba(0,128,128,0.4);
+    padding-bottom: 8px;
+}
+
+.distributor-box p {
+    margin: 8px 0;
+    color: #b8b8b8;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 12px;
+}
+
+.distributor-box strong {
+    color: #b8b8b8;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.distributor-box a {
+    color: #e0f7f7;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    font-size: 12px;
+}
+
+.distributor-box a:hover {
+    color: #fff;
+}
+
+/* PARTNERS */
+
+.partner-card {
+    background: linear-gradient(135deg, rgba(0,128,128,0.08), rgba(0,102,102,0.05));
+    border: 1px solid rgba(0,128,128,0.2);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.partner-card:hover {
+    background: linear-gradient(135deg, rgba(0,128,128,0.12), rgba(0,102,102,0.08));
+    border-color: rgba(0,128,128,0.4);
+    transform: translateY(-2px);
+}
+
+.partner-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.partner-card p {
+    margin: 6px 0;
+    color: #b8b8b8;
+    font-size: 12px;
+    line-height: 1.6;
 }
 
 .distributor-box-title {
     font-size: 17px;
     font-weight: 700;
-    margin-bottom: 12px;
-    color: #b71c1c;
+    margin-bottom: 16px;
+    color: #fff;
+    border-bottom: 2px solid rgba(0,128,128,0.4);
+    padding-bottom: 10px;
+}
+
+.distributor-box p {
+    margin: 10px 0;
+    color: #b8b8b8;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
 }
 
 .distributor-box strong {
-    color: #000;
+    color: #b8b8b8;
     font-weight: 600;
+}
+
+.distributor-box a {
+    color: #e0f7f7;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.distributor-box a:hover {
+    color: #fff;
 }
 
 /* SKYLINE */
@@ -408,22 +556,30 @@ footer {
 
 .footer-bottom {
     text-align: center;
-    color: #999;
-    font-size: 14px;
-    padding-top: 20px;
+    color: #888;
+    font-size: 13px;
+    padding: 25px 0 10px;
+    letter-spacing: 0.3px;
 }
 
 .footer-bottom span {
     color: var(--teal);
-    font-weight: 600;
+    font-weight: 700;
 }
 
 /* RESPONSIVE */
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
     .footer-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 40px;
+        gap: 35px;
     }
 }
 
@@ -527,6 +683,208 @@ footer {
     </div>
 </section>
 
+<section id="services">
+    <h2>Services We Provide</h2>
+    <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 16px;">
+        A Quality Experience Team With Years Of Experience
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px;">
+
+        <!-- CARD 1 -->
+        <div style="border: 1px solid var(--border); padding: 35px 30px; text-align: center; background: #fff; border-radius: 8px; transition: all 0.3s ease;">
+            <div style="
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 25px;
+                background: linear-gradient(135deg, var(--teal), var(--dark-teal));
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 36px;
+                color: #fff;
+                box-shadow: 0 4px 15px rgba(0,128,128,0.2);
+            ">
+                👥
+            </div>
+            <h3 style="margin-bottom: 15px; color: var(--text-dark); font-size: 19px;">
+                Queue Management System
+            </h3>
+            <p style="line-height: 1.7; color: var(--text-muted); font-size: 15px;">
+                ECQ Queue Management Systems help customers wait comfortably 
+                instead of standing in long queues.
+            </p>
+        </div>
+
+        <!-- CARD 2 -->
+        <div style="border: 1px solid var(--border); padding: 35px 30px; text-align: center; background: #fff; border-radius: 8px; transition: all 0.3s ease;">
+            <div style="
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 25px;
+                background: linear-gradient(135deg, var(--teal), var(--dark-teal));
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 36px;
+                color: #fff;
+                box-shadow: 0 4px 15px rgba(0,128,128,0.2);
+            ">
+                ⭐
+            </div>
+            <h3 style="margin-bottom: 15px; color: var(--text-dark); font-size: 19px;">
+                Improve Service Quality
+            </h3>
+            <p style="line-height: 1.7; color: var(--text-muted); font-size: 15px;">
+                Intelligent queue statistics help track staff performance. 
+                Service issues get highlighted immediately.
+            </p>
+        </div>
+
+        <!-- CARD 3 -->
+        <div style="border: 1px solid var(--border); padding: 35px 30px; text-align: center; background: #fff; border-radius: 8px; transition: all 0.3s ease;">
+            <div style="
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 25px;
+                background: linear-gradient(135deg, var(--teal), var(--dark-teal));
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 36px;
+                color: #fff;
+                box-shadow: 0 4px 15px rgba(0,128,128,0.2);
+            ">
+                ⚙️
+            </div>
+            <h3 style="margin-bottom: 15px; color: var(--text-dark); font-size: 19px;">
+                Customization of Features
+            </h3>
+            <p style="line-height: 1.7; color: var(--text-muted); font-size: 15px;">
+                ECQ software helps organizations manage customer flow 
+                with customizable queue management features.
+            </p>
+        </div>
+
+        <!-- CARD 4 -->
+        <div style="border: 1px solid var(--border); padding: 35px 30px; text-align: center; background: #fff; border-radius: 8px; transition: all 0.3s ease;">
+            <div style="
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 25px;
+                background: linear-gradient(135deg, var(--teal), var(--dark-teal));
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 36px;
+                color: #fff;
+                box-shadow: 0 4px 15px rgba(0,128,128,0.2);
+            ">
+                📊
+            </div>
+            <h3 style="margin-bottom: 15px; color: var(--text-dark); font-size: 19px;">
+                Customized Reports
+            </h3>
+            <p style="line-height: 1.7; color: var(--text-muted); font-size: 15px;">
+                Intelligent systems help you know customer flow and predict 
+                future queues using historic data.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="learn-more" style="padding-top: 40px;">
+
+    <h2>Learn More About Queue Management</h2>
+
+    <div style="display: flex; gap: 40px; margin-top: 30px; align-items: start;">
+
+        <div style="flex: 1; line-height: 1.8;">
+            <p>No one likes to wait these days. Time has become such a valuable resource...</p>
+            <!-- ✔ Add the rest of your text exactly from screenshot -->
+        </div>
+
+        <div style="flex: 1;">
+            <img src="images/learn1.png" style="width: 100%; border-radius: 8px;">
+        </div>
+
+    </div>
+</section>
+
+<section id="our-products" style="text-align:center; padding-top: 40px;">
+
+    <h2>Our Products</h2>
+
+    <div style="margin-top: 20px;">
+
+        <h3 style="color: var(--teal); font-size: 28px;">ECQ-TP800D</h3>
+        <img src="images/TP800D.png" style="height: 320px; margin-top: 20px;">
+
+        <!-- Navigation arrows -->
+        <div style="margin-top: 30px; display: flex; justify-content: space-between;">
+            <span style="font-size: 40px; cursor:pointer;">❮</span>
+            <span style="font-size: 40px; cursor:pointer;">❯</span>
+        </div>
+
+    </div>
+
+</section>
+
+<section style="
+    background: linear-gradient(135deg, rgba(0,128,128,0.95), rgba(0,102,102,0.95)), url('images/banner.png') center/cover no-repeat;
+    padding: 100px 5%;
+    text-align: center;
+    margin-top: 60px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+">
+    <div style="max-width: 800px; margin: 0 auto;">
+        <h2 style="
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        ">
+            Interested in our Products?
+        </h2>
+        
+        <p style="
+            font-size: 18px;
+            color: #e0f7f7;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        ">
+            Get in touch with our team to learn more about our queue management solutions
+        </p>
+
+        <a href="#contact" style="
+            display: inline-block;
+            padding: 16px 45px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: 3px solid #fff;
+            background: #fff;
+            color: var(--dark-teal);
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        " onmouseover="this.style.background='transparent'; this.style.color='#fff';" 
+           onmouseout="this.style.background='#fff'; this.style.color='var(--dark-teal)';">
+            ENQUIRE NOW
+        </a>
+    </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
     <h2>Contact Us</h2>
@@ -614,20 +972,43 @@ footer {
             <div class="footer-column">
                 <h4>Distributors</h4>
                 
-                <select class="distributor-select">
-                    <option>United Arab Emirates</option>
-                    <option>Saudi Arabia</option>
-                    <option>Qatar</option>
+                <select class="distributor-select" id="distributorSelect" onchange="showDistributor(this.value)">
+                    <option value="uae">United Arab Emirates</option>
+                    <option value="saudi">Saudi Arabia</option>
                 </select>
 
-                <div class="distributor-box">
+                <!-- UAE Distributor -->
+                <div class="distributor-box active" id="dist-uae">
                     <div class="distributor-box-title">Metal Zone General Trading LLC</div>
-                    Al Yasmeen Building - Abuhail<br>
+                    <p>📍 Al Yasmeen Building - Abuhail<br>
                     Office Number: 302, Metro Station<br>
-                    Abu Hail - Dubai, UAE<br><br>
-                    <strong>📞 +971 56 292 3475</strong><br>
-                    <strong>📞 +971 04 553 2997</strong><br><br>
-                    <strong>✉️ syeds@metalzoneuae.com</strong>
+                    Abu Hail - Dubai, UAE</p>
+                    <p><strong>📞</strong> <a href="tel:+971562923475">+971 56 292 3475</a></p>
+                    <p><strong>📞</strong> <a href="tel:+97145532997">+971 04 553 2997</a></p>
+                    <p><strong>✉️</strong> <a href="mailto:syeds@metalzoneuae.com">syeds@metalzoneuae.com</a></p>
+                </div>
+
+                <!-- Saudi Arabia Distributor -->
+                <div class="distributor-box" id="dist-saudi">
+                    <div class="distributor-box-title">Okaz Telecom Est</div>
+                    <p>📍 3rd Floor, Office 305<br>
+                    Amoudi Telecom Center, Palestine Street<br>
+                    Jeddah, Saudi Arabia</p>
+                    <p><strong>📞</strong> <a href="tel:+966126690959">+966 12 6690959</a></p>
+                    <p><strong>✉️</strong> <a href="mailto:sales@okazgroup.com">sales@okazgroup.com</a></p>
+                </div>
+            </div>
+
+            <!-- PARTNERS -->
+            <div class="footer-column">
+                <h4>Partners</h4>
+                
+                <div class="partner-card">
+                    <div class="partner-card-title">TechFlow Solutions</div>
+                    <p>📍 Business Bay Tower<br>
+                    Sheikh Zayed Road<br>
+                    Dubai, UAE</p>
+                    <p>🤝 <strong>Strategic Partner</strong></p>
                 </div>
             </div>
 
@@ -646,6 +1027,22 @@ footer {
 
     </div>
 </footer>
+
+<script>
+function showDistributor(country) {
+    // Hide all distributor boxes
+    var boxes = document.querySelectorAll('.distributor-box');
+    boxes.forEach(function(box) {
+        box.classList.remove('active');
+    });
+    
+    // Show selected distributor box
+    var selectedBox = document.getElementById('dist-' + country);
+    if (selectedBox) {
+        selectedBox.classList.add('active');
+    }
+}
+</script>
 
 </body>
 </html>
